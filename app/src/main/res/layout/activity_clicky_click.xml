@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:text="@string/button_a"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_b"
+        app:layout_constraintBottom_toBottomOf="@+id/clicky_click_back_button"
         app:layout_constraintEnd_toStartOf="@+id/button_c"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toEndOf="@+id/button_a"
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:text="@string/button_c"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +45,8 @@
         android:text="@string/button_d"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_a" />
+        app:layout_constraintTop_toBottomOf="@+id/button_a"
+        app:layout_constraintVertical_bias="0.023" />
 
     <Button
         android:id="@+id/button_e"
@@ -53,7 +57,8 @@
         app:layout_constraintEnd_toStartOf="@+id/button_f"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toEndOf="@+id/button_d"
-        app:layout_constraintTop_toBottomOf="@+id/button_b" />
+        app:layout_constraintTop_toBottomOf="@+id/button_b"
+        app:layout_constraintVertical_bias="0.023" />
 
     <Button
         android:id="@+id/button_f"
@@ -63,7 +68,8 @@
         android:text="@string/button_f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_c" />
+        app:layout_constraintTop_toBottomOf="@+id/button_c"
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/button_pressed_text_view"
