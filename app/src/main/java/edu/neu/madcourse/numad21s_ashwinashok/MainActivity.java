@@ -2,6 +2,7 @@ package edu.neu.madcourse.numad21s_ashwinashok;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Button about_me_button;
+    private Button clicky_click_button;
     private TextView main_activity_text;
     private int curr_page_num;
     private ArrayList<Page> page_list;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize activity components
         about_me_button = findViewById(R.id.about_me_button);
+        clicky_click_button = findViewById(R.id.clicky_click_button);
         main_activity_text = findViewById(R.id.main_activity_text);
 
         // Initialize the page list;
@@ -47,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
                     load_page(1);
                 else
                     load_page(0);
+            }
+        });
+
+        clicky_click_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ClickyClick.class);
+                startActivity(intent);
             }
         });
     }
