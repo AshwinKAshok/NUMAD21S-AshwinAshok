@@ -38,6 +38,8 @@ public class ClickyClick extends AppCompatActivity {
 
         button_pressed_text = findViewById(R.id.button_pressed_text_view);
 
+        last_button_pressed = "No button pressed!!";
+
         if(savedInstanceState != null) {
             last_button_pressed = savedInstanceState.getString("last_button_pressed");
             button_pressed_text.setText(last_button_pressed);

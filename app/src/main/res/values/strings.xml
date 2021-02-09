@@ -7,7 +7,7 @@
     <string name="button_d">D</string>
     <string name="button_e">E</string>
     <string name="button_f">F</string>
-    <string name="text_view_button_pressed_default">No button pressesd!!</string>
+    <string name="text_view_button_pressed_default">No button pressed!!</string>
     <string name="clicky_click_button">Clicky-click</string>
     <string name="clicky_click_back_button">Go back to home</string>
 </resources>
