@@ -1,4 +1,4 @@
-package edu.neu.madcourse.numad21s_ashwinashok;
+package edu.neu.madcourse.numad21s_ashwinashok.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import edu.neu.madcourse.numad21s_ashwinashok.R;
+import edu.neu.madcourse.numad21s_ashwinashok.models.Page;
+import edu.neu.madcourse.numad21s_ashwinashok.views.ClickyClickActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         clicky_click_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ClickyClick.class);
+                Intent intent = new Intent(getApplicationContext(), ClickyClickActivity.class);
                 startActivity(intent);
             }
         });

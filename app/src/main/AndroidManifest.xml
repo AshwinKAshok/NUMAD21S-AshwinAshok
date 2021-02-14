@@ -8,8 +8,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SAshwinAshok">
-        <activity android:name=".ClickyClick"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".views.ItemCardActivity"></activity>
+        <activity android:name=".views.ActivityLinkCollector" />
+        <activity android:name=".views.ClickyClickActivity" />
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

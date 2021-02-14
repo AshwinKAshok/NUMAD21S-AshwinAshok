@@ -1,4 +1,4 @@
-package edu.neu.madcourse.numad21s_ashwinashok;
+package edu.neu.madcourse.numad21s_ashwinashok.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ClickyClick extends AppCompatActivity {
+import edu.neu.madcourse.numad21s_ashwinashok.R;
+
+public class ClickyClickActivity extends AppCompatActivity {
 
     private Button button_a;
     private Button button_b;

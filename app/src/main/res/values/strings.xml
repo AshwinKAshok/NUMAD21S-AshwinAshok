@@ -10,4 +10,6 @@
     <string name="text_view_button_pressed_default">No button pressed!!</string>
     <string name="clicky_click_button">Clicky-click</string>
     <string name="clicky_click_back_button">Go back to home</string>
+    <string name="url">Enter url</string>
+    <string name="web_surf">Open</string>
 </resources>

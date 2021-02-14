@@ -1,4 +1,4 @@
-package edu.neu.madcourse.numad21s_ashwinashok;
+package edu.neu.madcourse.numad21s_ashwinashok.models;
 
 public class Page {
     private int page_num;
