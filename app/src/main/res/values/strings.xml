@@ -12,4 +12,5 @@
     <string name="clicky_click_back_button">Go back to home</string>
     <string name="url">Enter url</string>
     <string name="web_surf">Open</string>
+    <string name="links_button">Links</string>
 </resources>

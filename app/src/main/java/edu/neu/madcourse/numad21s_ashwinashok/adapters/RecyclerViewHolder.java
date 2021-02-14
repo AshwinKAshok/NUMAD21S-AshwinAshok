@@ -12,9 +12,9 @@ import edu.neu.madcourse.numad21s_ashwinashok.R;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView urlTextView;
-    private Button urlButton;
-    public RecyclerViewHolder(View itemView, final AdapterView.OnItemClickListener listener) {
+    public TextView urlTextView;
+    public Button urlButton;
+    public RecyclerViewHolder(View itemView) {
         super(itemView);
 
         urlTextView = itemView.findViewById(R.id.url_text);
@@ -23,12 +23,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         urlButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listener != null) {
-                    int position = getLayoutPosition();
-                    if(position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(position);
-                    }
-                }
+
             }
         });
 

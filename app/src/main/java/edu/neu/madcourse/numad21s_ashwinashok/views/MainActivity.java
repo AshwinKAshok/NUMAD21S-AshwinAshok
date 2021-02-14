@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button about_me_button;
     private Button clicky_click_button;
+    private Button links_button;
     private TextView main_activity_text;
     private int curr_page_num;
     private ArrayList<Page> page_list;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize activity components
         about_me_button = findViewById(R.id.about_me_button);
         clicky_click_button = findViewById(R.id.clicky_click_button);
+        links_button = findViewById(R.id.links_button);
         main_activity_text = findViewById(R.id.main_activity_text);
 
         // Initialize the page list;
@@ -61,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ClickyClickActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        links_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ActivityLinkCollector.class);
                 startActivity(intent);
             }
         });
