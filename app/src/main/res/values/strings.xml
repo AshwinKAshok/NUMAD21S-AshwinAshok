@@ -13,4 +13,5 @@
     <string name="url">Enter url</string>
     <string name="web_surf">Open</string>
     <string name="links_button">Links</string>
+    <string name="update_url_button">Update</string>
 </resources>

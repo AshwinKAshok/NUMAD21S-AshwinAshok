@@ -15,16 +15,21 @@ import edu.neu.madcourse.numad21s_ashwinashok.models.ItemCard;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     private final ArrayList<ItemCard> itemList;
+    private ItemClickListener listener;
 
     public RecyclerViewAdapter(ArrayList<ItemCard> itemList) {
         this.itemList = itemList;
+    }
+
+    public void setOnItemClickListener(ItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_item_card, parent, false);
-        return new RecyclerViewHolder(view);
+        return new RecyclerViewHolder(view, listener);
     }
 
     @Override

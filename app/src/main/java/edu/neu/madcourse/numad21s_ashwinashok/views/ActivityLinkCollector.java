@@ -119,6 +119,23 @@ public class ActivityLinkCollector extends AppCompatActivity{
         recyclerView.setHasFixedSize(true);
         recyclerViewAdapter = new RecyclerViewAdapter(itemList);
 
+        ItemClickListener itemClickListener = new ItemClickListener() {
+            @Override
+            public void onUpdateClick(int position, String updatedURL) {
+                itemList.get(position).setUrl(updatedURL);
+
+                recyclerViewAdapter.notifyItemChanged(position);
+            }
+
+            @Override
+            public void onWebSurfClick(int position) {
+
+
+                recyclerViewAdapter.notifyItemChanged(position);
+            }
+        };
+
+        recyclerViewAdapter.setOnItemClickListener(itemClickListener);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
     }
