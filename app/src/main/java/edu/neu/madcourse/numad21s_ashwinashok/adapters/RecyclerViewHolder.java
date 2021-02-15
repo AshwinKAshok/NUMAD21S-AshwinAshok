@@ -1,5 +1,7 @@
 package edu.neu.madcourse.numad21s_ashwinashok.adapters;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +33,21 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 if(isValidURL(urlTextView.getText().toString())) {
+                    int position = getLayoutPosition();
 
+                    if(listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onWebSurfClick(position, urlTextView.getText().toString());
+                    } else {
+                        Snackbar mySnackbar = Snackbar.make(urlButton, "Oops!! Something went wrong.", Snackbar.LENGTH_SHORT);
+                        mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mySnackbar.dismiss();
+                            }
+                        });
+
+                        mySnackbar.show();
+                    }
                 } else {
                     Snackbar mySnackbar = Snackbar.make(updateUrlButton, "Incorrect URL!! Try again.", Snackbar.LENGTH_SHORT);
                     mySnackbar.setAction("CLOSE", new View.OnClickListener() {

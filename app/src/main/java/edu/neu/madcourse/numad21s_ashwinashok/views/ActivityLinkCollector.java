@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -140,10 +142,9 @@ public class ActivityLinkCollector extends AppCompatActivity{
             }
 
             @Override
-            public void onWebSurfClick(int position) {
-
-
-                recyclerViewAdapter.notifyItemChanged(position);
+            public void onWebSurfClick(int position, String url) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
             }
 
             @Override
