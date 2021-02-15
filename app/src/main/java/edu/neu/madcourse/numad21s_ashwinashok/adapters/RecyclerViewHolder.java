@@ -1,13 +1,13 @@
 package edu.neu.madcourse.numad21s_ashwinashok.adapters;
 
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,6 +19,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     public TextView urlTextView;
     public Button urlButton;
     public Button updateUrlButton;
+
     public RecyclerViewHolder(View itemView, ItemClickListener listener) {
         super(itemView);
 
@@ -29,7 +30,19 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         urlButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isValidURL(urlTextView.getText().toString())) {
 
+                } else {
+                    Snackbar mySnackbar = Snackbar.make(updateUrlButton, "Incorrect URL!! Try again.", Snackbar.LENGTH_SHORT);
+                    mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mySnackbar.dismiss();
+                        }
+                    });
+
+                    mySnackbar.show();
+                }
             }
         });
 
@@ -41,13 +54,37 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
                     int position = getLayoutPosition();
                     if(position != RecyclerView.NO_POSITION) {
                         String updatedURL = urlTextView.getText().toString();
+                        if(isValidURL(updatedURL)) {
+                            Snackbar mySnackbar = Snackbar.make(updateUrlButton, "URL updated", Snackbar.LENGTH_SHORT);
+                            mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    mySnackbar.dismiss();
+                                }
+                            });
 
-                        listener.onUpdateClick(position, updatedURL);
+                            listener.onUpdateClick(position, updatedURL);
+                            mySnackbar.show();
+                        } else {
+
+                            Snackbar mySnackbar = Snackbar.make(updateUrlButton, "Incorrect URL!! Try again.", Snackbar.LENGTH_SHORT);
+                            mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    mySnackbar.dismiss();
+                                }
+                            });
+
+                            Log.d("here123:.. invalid url........", listener.getUrlAtIndex(position));
+                            urlTextView.setText(listener.getUrlAtIndex(position));
+                            mySnackbar.show();
+                        }
                     }
                 }
             }
         });
     }
+
 
     public static boolean isValidURL(String url) {
         // Regex to check valid URL

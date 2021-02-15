@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,16 @@ public class ActivityLinkCollector extends AppCompatActivity{
             public void onClick(View v) {
                 int pos = 0;
                 addItem(pos);
+
+                Snackbar mySnackbar = Snackbar.make(addButton, "URL item added", Snackbar.LENGTH_SHORT);
+                mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mySnackbar.dismiss();
+                    }
+                });
+
+                mySnackbar.show();
             }
         });
 
@@ -122,6 +133,7 @@ public class ActivityLinkCollector extends AppCompatActivity{
         ItemClickListener itemClickListener = new ItemClickListener() {
             @Override
             public void onUpdateClick(int position, String updatedURL) {
+
                 itemList.get(position).setUrl(updatedURL);
 
                 recyclerViewAdapter.notifyItemChanged(position);
@@ -133,6 +145,14 @@ public class ActivityLinkCollector extends AppCompatActivity{
 
                 recyclerViewAdapter.notifyItemChanged(position);
             }
+
+            @Override
+            public String getUrlAtIndex(int position) {
+                if(itemList.size() > 0)
+                    return itemList.get(position).getUrl();
+                else
+                    return null;
+            }
         };
 
         recyclerViewAdapter.setOnItemClickListener(itemClickListener);
@@ -142,8 +162,6 @@ public class ActivityLinkCollector extends AppCompatActivity{
 
     private void addItem(int position) {
         itemList.add(position, new ItemCard("Enter url"));
-        Log.d("Here: ...............", itemList.toString());
-        Toast.makeText(this, "Added an item", Toast.LENGTH_SHORT).show();
 
         recyclerViewAdapter.notifyItemInserted(position);
     }

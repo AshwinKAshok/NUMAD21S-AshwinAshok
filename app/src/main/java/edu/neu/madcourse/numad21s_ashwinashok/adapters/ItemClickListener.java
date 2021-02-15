@@ -4,4 +4,6 @@ public interface ItemClickListener {
     void onUpdateClick(int position, String updatedURL);
 
     void onWebSurfClick(int position);
+
+    String getUrlAtIndex(int position);
 }
