@@ -91,7 +91,6 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
                                 }
                             });
 
-                            Log.d("here123:.. invalid url........", listener.getUrlAtIndex(position));
                             urlTextView.setText(listener.getUrlAtIndex(position));
                             mySnackbar.show();
                         }
