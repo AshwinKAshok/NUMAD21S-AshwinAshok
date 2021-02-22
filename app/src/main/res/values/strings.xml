@@ -14,4 +14,7 @@
     <string name="web_surf">Open</string>
     <string name="links_button">Links</string>
     <string name="update_url_button">Update</string>
+    <string name="location_button_text">Location</string>
+    <string name="location_display_text">Location is:</string>
+    <string name="get_location_button">Location</string>
 </resources>
