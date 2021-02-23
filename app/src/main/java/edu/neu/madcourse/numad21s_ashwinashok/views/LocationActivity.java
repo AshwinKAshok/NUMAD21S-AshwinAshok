@@ -15,6 +15,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -49,29 +50,29 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
 
                 // Check for location sensor availability
                 if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                    builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                        }
-                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-
-                    final AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-
-
+                    OnGPS();
                 } else {
                     getLocation();
                 }
             }
         });
+    }
+
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 
@@ -98,5 +99,10 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         super.onSaveInstanceState(outState);
 
         outState.putString("location", location_text);
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+        Log.d("Location provider status: ", "Disabled");
     }
 }
