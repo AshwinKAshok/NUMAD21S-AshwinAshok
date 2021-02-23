@@ -15,6 +15,6 @@
     <string name="links_button">Links</string>
     <string name="update_url_button">Update</string>
     <string name="location_button_text">Location</string>
-    <string name="location_display_text">Location is:</string>
-    <string name="get_location_button">Location</string>
+    <string name="location_display_text">Click on the button to get your location.</string>
+    <string name="get_location_button">Get your location!!</string>
 </resources>

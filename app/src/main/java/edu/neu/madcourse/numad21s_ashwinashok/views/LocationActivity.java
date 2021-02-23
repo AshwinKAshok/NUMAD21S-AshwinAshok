@@ -27,6 +27,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     Button get_location_button;
     TextView display_location_text_view;
     LocationManager locationManager;
+    String location_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,10 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         display_location_text_view = findViewById(R.id.location_text);
         get_location_button = findViewById(R.id.get_location_button);
 
+        if(savedInstanceState != null) {
+            location_text = savedInstanceState.getString("location");
+            display_location_text_view.setText(location_text);
+        }
 
         get_location_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +84,15 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        String location_text = "Latitude: "+ location.getLatitude() + "Longitude: " + location.getLongitude();
+        location_text = "Latitude: "+ location.getLatitude() + "\nLongitude: " + location.getLongitude();
 
         display_location_text_view.setText(location_text);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("location", location_text);
     }
 }
