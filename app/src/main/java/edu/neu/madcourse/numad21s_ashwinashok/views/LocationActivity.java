@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import edu.neu.madcourse.numad21s_ashwinashok.R;
 
 public class LocationActivity extends AppCompatActivity implements LocationListener {
@@ -69,6 +71,15 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                Snackbar mySnackbar = Snackbar.make(get_location_button, "GPS not started.", Snackbar.LENGTH_SHORT);
+                mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mySnackbar.dismiss();
+                    }
+                });
+
+                mySnackbar.show();
             }
         });
         final AlertDialog alertDialog = builder.create();
@@ -104,5 +115,14 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     @Override
     public void onProviderDisabled(@NonNull String provider) {
         Log.d("Location provider status: ", "Disabled");
+        Snackbar mySnackbar = Snackbar.make(get_location_button, "GPS turned off", Snackbar.LENGTH_SHORT);
+        mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mySnackbar.dismiss();
+            }
+        });
+
+        mySnackbar.show();
     }
 }
