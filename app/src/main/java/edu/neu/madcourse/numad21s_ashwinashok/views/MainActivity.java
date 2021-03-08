@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button clicky_click_button;
     private Button links_button;
     private Button location_button;
+    private Button web_services_button;
     private TextView main_activity_text;
     private int curr_page_num;
     private ArrayList<Page> page_list;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         links_button = findViewById(R.id.links_button);
         location_button = findViewById(R.id.location_button);
         main_activity_text = findViewById(R.id.main_activity_text);
+        web_services_button = findViewById(R.id.web_service_button);
 
         // Initialize the page list;
         page_list = new ArrayList<>();
@@ -81,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        web_services_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WebServiceActivity.class);
                 startActivity(intent);
             }
         });
