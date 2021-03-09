@@ -59,8 +59,6 @@ public class WebServiceActivity extends AppCompatActivity {
         getWeatherThread.setName("Get-Weather-Thread");
         getWeatherThread.start();
         String test = String.valueOf(location_name_text_view.getText());
-        Log.d("GEO get text: ..............:", test);
-        Log.d("Location name textview value .............: ", String.valueOf(R.string.location_name_textview) );
 
         if(savedInstanceState != null) {
             weather_details_text_view.setText(savedInstanceState.getString("weather_details"));

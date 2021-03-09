@@ -4,11 +4,13 @@ public class WeatherResponseMessage {
     private String temp;
     private String feels_like;
     private String description;
+    private String location;
 
-    public WeatherResponseMessage(String temp, String feels_like, String description) {
+    public WeatherResponseMessage(String temp, String feels_like, String description, String location) {
         this.temp = temp;
         this.feels_like = feels_like;
         this.description = description;
+        this.location = location;
     }
 
     public String getTemp() {
@@ -33,5 +35,13 @@ public class WeatherResponseMessage {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

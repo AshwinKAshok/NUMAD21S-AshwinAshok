@@ -35,8 +35,10 @@ public class MainThreadHandler extends Handler {
 
         location_text_view.setText(R.string.location_name_textview);
 
-        weather_details_text_view.setText("Current temp: " + weatherResponseMessage.getTemp()
-                + "\nFeels like: " + weatherResponseMessage.getFeels_like()
+        weather_details_text_view.setText( "Location: "
+                + weatherResponseMessage.getLocation()
+                + "\nCurrent temp: " + weatherResponseMessage.getTemp() + " F"
+                + "\nFeels like: " + weatherResponseMessage.getFeels_like() + " F"
                 + "\nWeather: " + weatherResponseMessage.getDescription()
         );
 

@@ -88,7 +88,7 @@ public class GetWeatherHandler extends Handler {
                 String weather_description = weather_description_json_object.getString("description");
 
                 Message weather_data_message = Message.obtain();
-                weather_data_message.obj = new WeatherResponseMessage(temp, feels_like, weather_description);
+                weather_data_message.obj = new WeatherResponseMessage(temp, feels_like, weather_description, getWeatherMessage.getLocation());
                 mainThreadHandler.sendMessage(weather_data_message);
 
             }
