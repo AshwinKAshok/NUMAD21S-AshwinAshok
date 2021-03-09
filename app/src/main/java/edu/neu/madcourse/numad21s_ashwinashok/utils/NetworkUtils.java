@@ -58,7 +58,17 @@ public final class NetworkUtils {
         conn.connect();
 
         // Read response.
-        InputStream inputStream = conn.getInputStream();
+        InputStream inputStream;
+
+        int status = conn.getResponseCode();
+
+        if (status != HttpURLConnection.HTTP_OK)  {
+            inputStream = conn.getErrorStream();
+        }
+        else  {
+            inputStream = conn.getInputStream();
+        }
+
         String resp = convertStreamToString(inputStream);
 
         return resp;

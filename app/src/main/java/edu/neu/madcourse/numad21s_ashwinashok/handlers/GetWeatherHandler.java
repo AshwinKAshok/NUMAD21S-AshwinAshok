@@ -25,8 +25,7 @@ public class GetWeatherHandler extends Handler {
 
     private MainThreadHandler mainThreadHandler;
 
-    public GetWeatherHandler(@NonNull Looper looper, MainThreadHandler mainThreadHandler) {
-        super(looper);
+    public GetWeatherHandler(MainThreadHandler mainThreadHandler) {
         this.mainThreadHandler = mainThreadHandler;
     }
 
@@ -39,7 +38,7 @@ public class GetWeatherHandler extends Handler {
     private void GetWeatherDataProcessor(GetWeatherMessage getWeatherMessage) {
 
         String geocoding_url = getWeatherMessage.getGeocoding_url()
-                + "/geocode/v1/json?q"
+                + "/geocode/v1/json?q="
                 + getLocationInCorrectFormat(getWeatherMessage.getLocation())
                 + "&key="
                 + getWeatherMessage.getGeocoding_api_key();
@@ -50,25 +49,25 @@ public class GetWeatherHandler extends Handler {
             URL geocoding_url_final = new URL(geocoding_url);
             String resp = NetworkUtils.httpResponse(geocoding_url_final);
 
-            Log.d("GEOCODING RESPONSE..............:", resp);
+//            Log.d("GEOCODING RESPONSE..............:", resp);
 
             JSONObject jsonObject = new JSONObject(resp);
-            JSONArray location_details_array = new JSONArray(jsonObject.getJSONArray("results"));
+            JSONArray location_details_array = jsonObject.getJSONArray("results");
 
             if(location_details_array.length() == 0) {
 
             } else {
                 JSONObject location_details = location_details_array.getJSONObject(0);
                 JSONObject geomtric_details = location_details.getJSONObject("geometry");
-                double latitude = location_details.getDouble("lat");
-                double longitude = location_details.getDouble("lng");
+                String latitude = geomtric_details.getString("lat");
+                String longitude = geomtric_details.getString("lng");
 
                 String weather_url = getWeatherMessage.getWeather_url()
                         + "/data/2.5/onecall?lat="
-                        + Double.toString(latitude)
+                        + latitude
                         + "&lon="
-                        + Double.toString(longitude)
-                        + "&units=imperical"
+                        + longitude
+                        + "&units=imperial"
                         + "&appid="
                         + getWeatherMessage.getWeather_api_key();
 
@@ -76,7 +75,7 @@ public class GetWeatherHandler extends Handler {
                 String weather_resp = NetworkUtils.httpResponse(weather_url_final);
 
                 Log.d("WEATHER URL........:", weather_url);
-                Log.d("WEATHER RESP..............:", weather_resp);
+//                Log.d("WEATHER RESP..............:", weather_resp);
 
                 JSONObject weather_details_json_object = new JSONObject(weather_resp);
                 JSONObject current_weather_json_object = weather_details_json_object.getJSONObject("current");
@@ -84,7 +83,7 @@ public class GetWeatherHandler extends Handler {
                 String temp = current_weather_json_object.getString("temp");
                 String feels_like = current_weather_json_object.getString("feels_like");
 
-                JSONObject weather_description_json_object = current_weather_json_object.getJSONObject("weather");
+                JSONObject weather_description_json_object = current_weather_json_object.getJSONArray("weather").getJSONObject(0);
 
                 String weather_description = weather_description_json_object.getString("description");
 

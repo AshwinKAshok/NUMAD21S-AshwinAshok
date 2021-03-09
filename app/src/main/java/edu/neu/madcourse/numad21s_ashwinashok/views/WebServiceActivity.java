@@ -18,6 +18,7 @@ import edu.neu.madcourse.numad21s_ashwinashok.utils.GetWeatherThread;
 public class WebServiceActivity extends AppCompatActivity {
 
     private TextView location_name_text_view;
+    private TextView weather_details_text_view;
     private Button get_weather_button;
     private String geocoding_api_key;
     private String geocoding_url;
@@ -37,6 +38,8 @@ public class WebServiceActivity extends AppCompatActivity {
         weather_api_key = "bbc33aa848a57dbca2073a2db25ad3a1";
 
         location_name_text_view = findViewById(R.id.location_name_textview);
+        weather_details_text_view = findViewById(R.id.weather_details_text_view);
+        weather_details_text_view.setText("Weather details not available!!\nEnter city name and click the button");
         get_weather_button = findViewById(R.id.get_weather_button);
 
         mainThreadHandler = new MainThreadHandler(Looper.getMainLooper(), location_name_text_view);

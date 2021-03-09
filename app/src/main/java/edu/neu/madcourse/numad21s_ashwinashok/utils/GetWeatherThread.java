@@ -16,7 +16,7 @@ public class GetWeatherThread extends Thread {
     @Override
     public void run() {
         Looper.prepare();
-        getWeatherHandler = new GetWeatherHandler(Looper.getMainLooper(), mainThreadHandler);
+        getWeatherHandler = new GetWeatherHandler(mainThreadHandler);
         Looper.loop();
     }
 }

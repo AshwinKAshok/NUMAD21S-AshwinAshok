@@ -20,4 +20,5 @@
     <string name="web_service_button">Web service</string>
     <string name="location_name_textview">Enter the city name</string>
     <string name="get_weather_button">Get weather!!</string>
+    <string name="weather_details_text_view"></string>
 </resources>
