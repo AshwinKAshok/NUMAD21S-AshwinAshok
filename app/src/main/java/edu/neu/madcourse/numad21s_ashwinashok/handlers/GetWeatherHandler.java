@@ -90,6 +90,7 @@ public class GetWeatherHandler extends Handler {
                 Message weather_data_message = Message.obtain();
                 weather_data_message.obj = new WeatherResponseMessage(temp, feels_like, weather_description);
                 mainThreadHandler.sendMessage(weather_data_message);
+
             }
 
         } catch (MalformedURLException e) {
